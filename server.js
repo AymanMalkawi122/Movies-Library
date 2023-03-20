@@ -12,37 +12,33 @@ function MovieObject(obj) {
 }
 
 app.get('/', (req, res) => {
-    if (req.path != "/")
-        res.status(404).send('Not Found');
-
-    else {
-        try {
-            res.send(new MovieObject(Data));
-        } catch (error) {
-            res.status(500).send({
-                "status": 500,
-                "responseText": "Sorry, something went wrong"
-            });
-        }
+    try {
+        res.send(new MovieObject(Data));
+    } catch (error) {
+        res.status(500).send({
+            "status": 500,
+            "responseText": "Sorry, something went wrong"
+        });
     }
+}
 
-})
+)
 
 app.get('/favorite', (req, res) => {
-    if (req.path != "/favorite")
-        res.status(404).send('Not Found');
-
-    else {
-        try {
-            res.send("Welcome to Favorite Page");
-        } catch (error) {
-            res.status(500).send({
-                "status": 500,
-                "responseText": "Sorry, something went wrong"
-            });
-        }
+    try {
+        res.send("Welcome to Favorite Page");
+    } catch (error) {
+        res.status(500).send({
+            "status": 500,
+            "responseText": "Sorry, something went wrong"
+        });
     }
-})
+}
+)
+
+app.get('*', (req, res) => {
+    res.status(404).send('404 Page not found');
+  });
 
 app.listen(PORT, () => {
     console.log(`port:${PORT}`);
