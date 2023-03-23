@@ -25,7 +25,7 @@ then go inside the cloned directory and run:
 Then go inside VS code editor and run this command in the terminal:
 
 
-npm server.js **OR** supervisor server.js (for quick server reload whenever the code is modified**must install supervisor package**)
+npm server.js **OR** supervisor server.js (for quick server reload whenever the code is modified **must install supervisor package**)
 ## Project Features
 ### implementation of the GET request for 
 1. home page
