@@ -19,13 +19,14 @@ then go inside the cloned directory and run:
 2. npm install express cors
 3. npm install dotenv
 4. npm install axios
-5. npm install pg
+5. npm install supervisor
+6. npm install pg
 
 
 Then go inside VS code editor and run this command in the terminal:
 
 
-npm server.js **OR** supervisor server.js (for quick server reload whenever the code is modified **must install supervisor package**)
+npm server.js **OR** supervisor server.js (for quick server reload whenever the code is modified)
 ## Project Features
 ### implementation of the GET request for 
 1. home page
