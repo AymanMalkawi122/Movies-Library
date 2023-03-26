@@ -26,7 +26,7 @@ then go inside the cloned directory and run:
 Then go inside VS code editor and run this command in the terminal:
 
 
-npm server.js **OR** supervisor server.js (for quick server reload whenever the code is modified)
+node server.js **OR** supervisor server.js (for quick server reload whenever the code is modified)
 ## Project Features
 ### implementation of the GET request for 
 1. home page
@@ -43,7 +43,7 @@ with error handling for 500 and 404 status codes.
 ### implementation of the POST request for
 1. addMovie route **(Database request)** 
 
-You must provide query values in the same order as the schema and with the same atributes names in JSON format movie in the server request body.
+You must provide query values in the same order as the schema and with the same atributes names in JSON format in the server request body.
 
 ![Alt text](./assets/images/Screenshot%202023-03-23%20144016.png)
 
