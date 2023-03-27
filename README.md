@@ -26,30 +26,50 @@ then go inside the cloned directory and run:
 Then go inside VS code editor and run this command in the terminal:
 
 
-node server.js **OR** supervisor server.js (for quick server reload whenever the code is modified)
+node server.js  **OR**  supervisor server.js (for quick server reload whenever the code is modified)
 ## Project Features
 ### implementation of the GET request for 
 1. home page
 2. favorite page 
 3. trending page **(API request)**
-4. search page **(API request)** (must provide name movie in the server query)
+4. search page **(API request)** (must provide the name of your movie in the server query)
+![Alt text](./assets/images/how%20to%20use/search.png)
 5. upcoming page **(API request)**
 6. discover page **(API request)**
-7. getMoives route **(Database request)**
 
-The get requests are forwarded from the server to the "themovieDB" API
-with error handling for 500 and 404 status codes.
+**The get requests are forwarded from the server to the "themovieDB" API**
+
+7. getMoives route **(Database request)**
+8. getMovie/:id route **(Database request)**
+
+You must specifiy the id of the tuple you want to be selected in the URL parameterrs
+
+![Alt text](./assets/images/how%20to%20use/getID.png)
 
 ### implementation of the POST request for
 1. addMovie route **(Database request)** 
 
-You must provide query values in the same order as the schema and with the same atributes names in JSON format in the server request body.
+You must provide query values except "id" in the server request body as JSON format and query atributes should have the same name in the schema.sql file
 
-![Alt text](./assets/images/Screenshot%202023-03-23%20144016.png)
+![Alt text](./assets/images/how%20to%20use/add.png)
 
-New moive data entrys are stored in a local relational database using postgress DBMS, all entries follow a schema defined in the schema.sql file.
+2. DELETE/:id route **(Database request)**
+
+You must specifiy the id of the tuple you want to be dedlted in the URL parameterrs
+
+![Alt text](./assets/images/how%20to%20use/delete.png)
+
+3. UPDATE/:id route **(Database request)**
+
+You must specifiy the id of the tuple you want to be updated in the URL parameterrs, and type your comment in the body of the request
+
+![Alt text](./assets/images/how%20to%20use/update.png)
+
+**New moive data entrys are stored in a local relational database using postgress DBMS, all entries follow a schema defined in the schema.sql file.**
+## Error handeling 
+This solution provides error handeling for all requests (codes 500 and 404)
 ## API request response cycle
-![Alt text](./assets/images/Screenshot%202023-03-21%20170838.png)
+![Alt text](./assets/images/RRC/Screenshot%202023-03-21%20170838.png)
 
 ## Database request response cycle
-![Alt text](./assets/images/Screenshot%202023-03-23%20142746.png)
+![Alt text](./assets/images/RRC/Screenshot%202023-03-23%20142746.png)
