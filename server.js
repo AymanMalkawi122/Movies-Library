@@ -56,7 +56,7 @@ app.get('/favorite', (req, res) => {
         errorHadnler(req, res);
     }
 })
-
+//API endpoints
 app.get('/trending', (req, res) => {
     let APIreq = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`;
     axios.get(APIreq)
@@ -108,16 +108,16 @@ app.get('/discover', (req, res) => {
             errorHadnler(req, res, error);
         })
 })
-
+//Databease endpoints
 app.post('/addMovie', (req, res) => {
     try {
-        let { id, title, release_date, poster_path, overview } = req.body;
-        let values = [id,title,release_date,poster_path,overview]
-        let query = `insert into ${tableName} (id,title,release_date,poster_path,overview) values ($1,$2,$3,$4,$5) returning *`;
+        let { title, release_date, poster_path, overview } = req.body;
+        let values = [title,release_date,poster_path,overview]
+        let query = `insert into ${tableName} (title,release_date,poster_path,overview) values ($1,$2,$3,$4) returning *`;
         client.query(query,values)
         .then((queryRes)=>{
             res.status(201).json(queryRes.rows)})
-        .catch()
+            .catch()
     } catch (err) {
         errorHadnler(req, res, err);
     }
@@ -134,6 +134,46 @@ app.get('/getMovies', (req, res) => {
         errorHadnler(req, res, err);
     }
 })
+
+app.post('/DELETE/:id', (req, res) => {
+    try {
+        let query = `delete from ${tableName} WHERE id=${req.params.id}`;
+        client.query(query)
+        .then((queryRes)=>{
+            res.status(204).send("done");
+        })
+        .catch()
+    } catch (err) {
+        errorHadnler(req, res, err);
+    }
+})
+
+app.post('/UPDATE/:id', (req, res) => {
+    try {
+        let query = `update ${tableName} set comment=$1 where id=${req.params.id} returning *`;
+        client.query(query,[req.body.comment])
+        .then((queryRes)=>{
+            res.json(queryRes.rows)
+        })
+        .catch()
+    } catch (err) {
+        errorHadnler(req, res, err);
+    }
+})
+
+app.get('/getMovie/:id', (req, res) => {
+    try {
+        let query = `select * from ${tableName} where id=${req.params.id}`;
+        client.query(query)
+        .then((queryRes)=>{
+            res.json(queryRes.rows)})
+        .catch()
+    } catch (err) {
+        errorHadnler(req, res, err);
+    }
+})
+
+
 
 app.get('*', (req, res) => {
     res.status(404).send('404 Page not found');
