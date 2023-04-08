@@ -2,11 +2,13 @@
 
 const express = require('express');
 const app = express();
-
 const Data = require('./Movie Data/data.json');
 const axios = require('axios');
+const cors =require('cors');
 require('dotenv').config();
-app.use(express.json())
+
+app.use(express.json());
+app.use(cors());
 
 const { Client } = require('pg')
 let url = process.env.URL;
