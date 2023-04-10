@@ -111,6 +111,7 @@ app.get('/discover', (req, res) => {
 //Databease endpoints
 app.post('/addMovie', (req, res) => {
     try {
+        console.log(req.body);
         let { title, release_date, poster_path, overview } = req.body;
         let values = [title,release_date,poster_path,overview]
         let query = `insert into ${tableName} (title,release_date,poster_path,overview) values ($1,$2,$3,$4) returning *`;
