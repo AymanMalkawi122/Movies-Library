@@ -39,7 +39,7 @@ node server.js  **OR**  supervisor server.js (for quick server reload whenever t
 
 **The get requests are forwarded from the server to the "themovieDB" API**
 
-7. getMoives route **(Database request)**
+7. getMovies route **(Database request)**
 8. getMovie/:id route **(Database request)**
 
 You must specifiy the id of the tuple you want to be selected in the URL parameterrs
