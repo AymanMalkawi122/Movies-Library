@@ -115,9 +115,9 @@ app.get('/discover', (req, res) => {
 app.post('/addMovie', (req, res) => {
     try {
         console.log(req.body);
-        let { title, release_date, poster_path, overview } = req.body;
-        let values = [title,release_date,poster_path,overview]
-        let query = `insert into ${tableName} (title,release_date,poster_path,overview) values ($1,$2,$3,$4) returning *`;
+        let { title, release_date, poster_path, overview,comment } = req.body;
+        let values = [title,release_date,poster_path,overview,comment]
+        let query = `insert into ${tableName} (title,release_date,poster_path,overview,comment) values ($1,$2,$3,$4,$5) returning *`;
         client.query(query,values)
         .then((queryRes)=>{
             res.status(201).json(queryRes.rows)})
